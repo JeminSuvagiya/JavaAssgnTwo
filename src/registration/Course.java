@@ -28,8 +28,14 @@ public class Course {
       //      Course comp1008 = new Course(frank, "COMP1008", "Intro to OOP", "E208", DayOfWeek.MONDAY, LocalTime.parse("11:00"), 3);
 
     
-     public Course(Instructor instructor, String courseCode, String courseName, String room,DayOfWeek dayofWeek, LocalTime classTime, int classSize) {
+    @Override
+     public String toString() {
 
+        return courseCode+"-"+courseName;
+    
+     }
+
+    public Course(Instructor instructor, String courseCode, String courseName, String room, DayOfWeek dayofWeek, LocalTime classTime, int classSize) {
         setCourseCode(courseCode);
         setCourseName(courseName);
         setRoom(room);
@@ -42,8 +48,7 @@ public class Course {
             throw new IllegalArgumentException("Instructor can not teach this course");
         }
         this.listOfStudents = listOfStudents;
-    
-     }
+    }
 
     public LocalTime getClassTime() {
         return classTime;
@@ -117,8 +122,15 @@ public class Course {
         this.listOfStudents = listOfStudents;
     }
 
-    public Course getCourseDayAndTime() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Course getCourseDayAndTime() {           
+        //"MONDAY's, starting at 11:00"
+       Course course = null;
+       String day = getDayOfWeek().toString();
+       LocalTime time = getClassTime();
+       
+       
+       return course;
+        
     }
     
     public void addStudent(Student student) {
@@ -138,5 +150,7 @@ public class Course {
    public ArrayList<Student> showClassList() {
         return listOfStudents;
     }
+
+ 
  
 }
